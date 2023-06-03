@@ -23,7 +23,7 @@ async function estrutureSe ()
     const conexao = await getConexao ();
     if (conexao==undefined) return null;
 
-    const sql = 'CREATE TABLE IF NOT EXISTS RESTful (id TINYINT UNSIGNED, ra VARCHAR(5) NOT NULL, lat VARCHAR(255) NOT NULL, lon VARCHAR(100) NOT NULL, img VARCHAR(100) NOT NULL, PRIMARY KEY (id))';
+    const sql = 'CREATE TABLE IF NOT EXISTS RESTful (id TINYINT UNSIGNED AUTO_INCREMENT, ra VARCHAR(5) NOT NULL, lat VARCHAR(20) NOT NULL, lon VARCHAR(20) NOT NULL, data DATETIME DEFAULT CURRENT_TIMESTAMP, img VARCHAR(255) NOT NULL, PRIMARY KEY (id))';
     
     try
     {

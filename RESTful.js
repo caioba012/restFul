@@ -1,23 +1,16 @@
 class RESTful
 {
-    #id
     #ra
     #lat
-    #log
+    #lon
     #img
 
-    constructor (id, ra, lat, log, img)
+    constructor (ra, lat, lon, img)
     {
-        this.id=id;
         this.ra=ra;
         this.lat=lat;
-        this.log=log;
+        this.lon=lon;
         this.img=img;
-    }
-
-    get id ()
-    {
-        return this.#id
     }
 
     get ra ()
@@ -30,23 +23,15 @@ class RESTful
         return this.#lat
     }
 
-    get log ()
+    get lon ()
     {
-        return this.#log
+        return this.#lon
     }
 
     get img ()
     {
         return this.#img
-    }
-
-    set id (id)
-    {
-        if (id===undefined || typeof id !== 'number' || isNaN(id) || id!==parseInt(id) || id<=0)
-            throw ('Id inválido');
-
-        this.#id = id;
-    }
+    }  
 
     set ra (ra)
     {
@@ -64,26 +49,26 @@ class RESTful
         this.#lat = lat;
     }
 
-    set log (log)
+    set lon (lon)
     {
-        if (log===undefined || typeof log !== 'string' || log==="")
-            throw ('Log inválido');
+        if (lon===undefined || typeof lon !== 'string' || lon==="")
+            throw ('lon inválido');
 
-        this.#log = log;
+        this.#lon = lon;
     }
     
     set img (img)
     {
         if (img===undefined || typeof img !== 'string' || img==="")
-            throw ('Ra inválido');
+            throw ('img inválido');
 
         this.#img = img;
     }
 }
 
-function novo (id, ra, lat, log, img)
+function novo (ra, lat, lon, img)
 {
-    return new RESTful (id, ra, lat, log, img);
+    return new RESTful (ra, lat, lon, img);
 }
 
 module.exports = {novo}

@@ -1,15 +1,15 @@
 const bd = require ('./bd'); //para poder acessar o banco de dados
 
 //essas funcoes sao async, pois usam funcoes que usam retornam promessas(bd.getConexao), e funcoes que esperam a conclusao(await bd.getConexao ();) 
-async function inclua (RESTful)//metodo para incluir com parâmetro livro
+async function inclua (restful)//metodo para incluir com parâmetro livro
 {
     const conexao = await bd.getConexao ();
     if (conexao==null) return null;
 
     try
     {
-        const sql     = 'INSERT INTO RESTful (id,ra,lat,log,img) VALUES (?,?,?,?,?)';
-        const dados   = [RESTful.id,RESTful.ra,RESTful.lat,RESTful.log,RESTful.img];
+        const sql     = 'INSERT INTO RESTful (ra,lat,lon,img) VALUES (?,?,?,?)';
+        const dados   = [restful.ra,restful.lat,restful.lon,restful.img];
         await conexao.query (sql, dados);
         return true;
     }
@@ -19,15 +19,15 @@ async function inclua (RESTful)//metodo para incluir com parâmetro livro
     }
 }
 
-async function atualize (RESTful)
+async function atualize (restful)
 {
     const conexao = await bd.getConexao ();
     if (conexao==null) return null;
 
     try
     {
-        const sql   = 'UPDATE RESTful SET ra=?,lat=?,log=?,img=? WHERE id=?';
-        const dados = [RESTful.ra,RESTful.lat,RESTful.log,RESTful.img,RESTful.id];
+        const sql   = 'UPDATE RESTful SET ra=?,lat=?,lon=?,img=? WHERE id=?';
+        const dados = [restful.ra,restful.lat,restful.lon,restful.img,restful.id];
         await conexao.query (sql,dados);
         return true;
     }
