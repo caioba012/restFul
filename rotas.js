@@ -8,7 +8,7 @@ async function inclusao (req, res)
 {
     if (Object.values(req.body).length!=4 || !req.body.ra || !req.body.lat || !req.body.lon || !req.body.img)
     {
-        const erro = Comunicado.novo('DdI','Dados inesperados','Não foram fornecidos exatamente as 4 informações esperadas de uma RESTful (id, ra, lat, lon, img)').object;
+        const erro = Comunicado.novo('DdI','Dados inesperados','Não foram fornecidos exatamente as 4 informações esperadas de uma RESTful (ra, lat, lon, img)').object;
         return res.status(422).json(erro);
     }
     
@@ -19,7 +19,7 @@ async function inclusao (req, res)
     }
     catch (excecao)
     {
-        const erro = Comunicado.novo('TDE','Dados de tipos errados','ID deve ser um numero natural positivo, RA deve ser um texto não vazio, LAT deve ser um texto não vazio, lon deve ser um texto não vazio, IMG deve ser um texto não vazio').object;
+        const erro = Comunicado.novo('TDE','Dados de tipos errados','RA deve ser um texto não vazio, LAT deve ser um texto não vazio, lon deve ser um texto não vazio, IMG deve ser um texto não vazio').object;
         return res.status(422).json(erro);
     }
 
@@ -33,7 +33,7 @@ async function inclusao (req, res)
 
     if (ret===false)
     {
-        const  erro = Comunicado.novo('DJE','Dados já existentes','Já há uma RESTful cadastrada com o id informado').object;
+        const  erro = Comunicado.novo('DJE','Dados já existentes','Já há dados cadastrados com o id informado').object;
         return res.status(409).json(erro);
     }
 
@@ -81,7 +81,7 @@ async function atualizacao (req, res)
 
     if (ret.length===0)
     {
-        const erro = Comunicado.novo('FNE','RESTful inexistente','Não há restful cadastrada com o código informado').object;
+        const erro = Comunicado.novo('DNE','Dados inexistente','Não há dados cadastrados com o código informado').object;
         return res.status(404).json(erro);
     }
 
