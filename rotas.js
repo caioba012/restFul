@@ -119,8 +119,8 @@ async function remocao (req, res)
         return res.status(422).json(erro);
     }
     
-    const codigo = req.params.codigo;
-    let ret = await RESTfuls.recupereUm(codigo);
+    const id = req.params.id;
+    let ret = await RESTfuls.recupereUm(id);
 
     if (ret===null)
     {
